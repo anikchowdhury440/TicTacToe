@@ -18,6 +18,25 @@ public class TicTacToeGame
 		System.out.println("Enter Your choice:(X or o) ");
 		return userInput.next().toUpperCase().charAt(0);
 	}
+	
+	//UC3
+	public void showBoard(char[] board)
+        {
+                for(int index = 1; index < board.length; index++)
+                {
+                        System.out.print(board[index]);
+                        if(index%3 == 0)
+                        {
+                                System.out.println(" ");
+                                if(index != 9)
+                                        System.out.println("_ _ _");
+                        }
+                        else
+                        {
+                                System.out.print("|");
+                        }
+                }
+        }
 
 	public static void main(String[] args)
 	{
@@ -34,5 +53,6 @@ public class TicTacToeGame
 		{
 			computerletter = 'X' ;
 		}
+		tictactoe.showBoard(board);
 	}
 }
