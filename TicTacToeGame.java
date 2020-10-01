@@ -72,6 +72,20 @@ public class TicTacToeGame
 		return index;
 	}
 
+	public int checkSpace(int index, char[] board)
+        {
+                int check = 0;
+                if( board[index] == ' ')
+                {
+                        check = 1;
+                }
+                else
+                {
+                        System.out.println("Location is filled already");
+                }
+                return check;
+        }
+
 	public static void main(String[] args)
 	{
 		int checkLocation = 0,index = 0 ;
@@ -81,6 +95,12 @@ public class TicTacToeGame
 		char userLetter = tictactoe.chooseInput(userinput);
 		char computerLetter = tictactoe.getComputerLetter(userLetter);
 		tictactoe.showBoard(board);
-		index = tictactoe.chooseIndex(userinput);
+		while(checkLocation == 0)
+                {
+                        index = tictactoe.chooseIndex(userinput);
+                        checkLocation = tictactoe.checkSpace(index,board);
+                }
+                board[index]=userLetter;
+                tictactoe.showBoard(board);
 	}
 }
