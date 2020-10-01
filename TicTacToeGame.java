@@ -18,7 +18,20 @@ public class TicTacToeGame
 		System.out.println("Enter Your choice:(X or o) ");
 		return userInput.next().toUpperCase().charAt(0);
 	}
-	
+	public char getComputerLetter(char userLetter)
+	{
+		char computerLetter;
+		if ( userLetter == 'X' )
+                {
+                        computerLetter = 'O';
+                }
+                else
+                {
+                        computerLetter = 'X' ;
+                }
+		return computerLetter;
+	}
+
 	//UC3
 	public void showBoard(char[] board)
         {
@@ -38,21 +51,36 @@ public class TicTacToeGame
                 }
         }
 
+	//UC4
+	public int chooseIndex(Scanner userInput)
+	{
+		int indexcheck = 0;
+		int index = 0;
+		while(indexcheck == 0)
+		{
+			System.out.println("Enter the index(1-9): ");
+	        	index = userInput.nextInt();
+			if(index >= 1 && index <= 9)
+			{
+				indexcheck = 1;
+			}
+			else
+			{
+				System.out.println("You didn't entered valid index. Please select valid index");
+			}
+		}
+		return index;
+	}
+
 	public static void main(String[] args)
 	{
-		char computerletter;
+		int checkLocation = 0,index = 0 ;
 		TicTacToeGame tictactoe = new TicTacToeGame();
 		char [] board = tictactoe.createBoard();
 		Scanner userinput = new Scanner(System.in);
-		char userletter = tictactoe.chooseInput(userinput);
-		if ( userletter == 'X' )
-		{
-			computerletter = 'O';
-		}
-		else
-		{
-			computerletter = 'X' ;
-		}
+		char userLetter = tictactoe.chooseInput(userinput);
+		char computerLetter = tictactoe.getComputerLetter(userLetter);
 		tictactoe.showBoard(board);
+		index = tictactoe.chooseIndex(userinput);
 	}
 }
